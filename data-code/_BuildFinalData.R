@@ -13,7 +13,7 @@ pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl,
                scales, gganimate, cobalt, ivpack, stargazer, haven, ggthemes,
                acs, tidyr)
 
-path.data='D:/CloudStation/Professional/Research Data/KFF/'
+#path.data=...
 
 source('data-code/Medicaid.R')
 source('data-code/ACS.R')
