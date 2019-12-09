@@ -16,9 +16,9 @@ The best source of Medicaid expansion data that I've found is from the *Kaiser F
 
 
 ## Code
-The master code file, [_BuildFinalData.r](data-code/_BuildFinalData.R), will call two individual code files when compiling the final dataset. 
+The master code file, [_BuildFinalData.R](data-code/_BuildFinalData.R), will call two individual code files when compiling the final dataset. 
 
 1. The script to collect and tidy the ACS data, [ACS.R](data-code/ACS.R). Note that you must have the `acs` package loaded and your api key saved for this to run.
 
-2. The script to clean the KFF Medicaid expansion data, [ACS.R](data-code/Medicaid.R). This assumes that you've already downloaded the KFF .csv file at [KFF Medicaid Expansion](https://www.kff.org/medicaid/issue-brief/status-of-state-medicaid-expansion-decisions-interactive-map/).
+2. The script to clean the KFF Medicaid expansion data, [Medicaid.R](data-code/Medicaid.R). This assumes that you've already downloaded the KFF .csv file at [KFF Medicaid Expansion](https://www.kff.org/medicaid/issue-brief/status-of-state-medicaid-expansion-decisions-interactive-map/).
 
