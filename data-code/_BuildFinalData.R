@@ -13,18 +13,18 @@ pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl,
                scales, gganimate, cobalt, ivpack, stargazer, haven, ggthemes,
                acs, tidyr)
 
+path.data='D:/CloudStation/Professional/Research Data/KFF/'
+
+source('data-code/Medicaid.R')
+source('data-code/ACS.R')
+
 
 # Tidy --------------------------------------------------------------------
-exp.data <- read_csv("data/Atlas_Reimbursements_2003-2015.csv")
+final.data <- final.insurance %>%
+  left_join(kff.final, by="State") %>%
+  mutate(expand_year = year(date_adopted),
+         expand = (year>=expand_year & !is.na(expand_year))) %>%
+  rename(expand_ever=expanded)
 
-exp.data <- pivot_longer(exp.data, cols=starts_with("Y"),
-                         names_to="Year", names_prefix="Y",
-                         names_ptypes = list(Year = integer()),
-                         values_to="Expenditures")
-exp.data <- exp.data %>%
-  rename(HRR=HRR_ID) %>%
-  select(HRR, Year, Expenditures)
-
-dartmouth.data <- exp.data %>%
-  left_join(mort.data, by=c("HRR","Year")) %>%
-  filter(complete.cases(.))
+write_tsv(final.data,'data/ACS_Medicaid.txt',append=FALSE,col_names=TRUE)
+write_rds(final.data,'data/acs_medicaid.rds')
