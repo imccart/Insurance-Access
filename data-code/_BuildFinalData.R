@@ -4,7 +4,7 @@
 ## Title:  Combine ACS and Medicaid Expansion Data
 ## Author: Ian McCarthy
 ## Date Created: 12/6/2019
-## Date Edited:  12/9/2019
+## Date Edited:  4/2/2020
 
 
 # Preliminaries -----------------------------------------------------------
@@ -13,8 +13,7 @@ pacman::p_load(tidyverse, ggplot2, dplyr, lubridate, readr, readxl,
                scales, gganimate, cobalt, ivpack, stargazer, haven, ggthemes,
                acs, tidyr)
 
-#path.data=...
-
+source('data-code/paths.R')
 source('data-code/Medicaid.R')
 source('data-code/ACS.R')
 

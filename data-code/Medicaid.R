@@ -8,7 +8,7 @@
 
 
 # Preliminaries -----------------------------------------------------------
-kff.dat <- read_csv(file=paste0(path.data,'KFF_medicaid_expansion_2019.csv'))
+kff.dat <- read_csv(file=paste0(path.data.kff,'KFF_medicaid_expansion_2019.csv'))
 
 # Clean KFF data -------------------------------------------------------
 
