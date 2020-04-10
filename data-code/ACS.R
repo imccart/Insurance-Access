@@ -70,3 +70,7 @@ final.insurance <- final.insurance %>%
          uninsured = none_18to34 + none_35to64) %>%
   select(State, year, adult_pop, ins_employer, ins_direct, 
          ins_medicare, ins_medicaid, uninsured)
+
+
+write_tsv(final.insurance,'data/insurance.txt',append=FALSE,col_names=TRUE)
+write_rds(final.insurance,'data/insurance.rds')
