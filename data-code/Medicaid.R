@@ -8,7 +8,7 @@
 
 
 # Preliminaries -----------------------------------------------------------
-kff.dat <- read_csv(file=paste0(path.data.kff,'KFF_medicaid_expansion_2019.csv'))
+kff.dat <- read_csv('data/input/KFF/KFF_medicaid_expansion_2019.csv')
 
 # Clean KFF data -------------------------------------------------------
 
@@ -23,3 +23,4 @@ kff.final <- kff.final %>%
   mutate(date_adopted = mdy(splitvar$date)) %>%
   select(State, expanded, date_adopted)
 
+write_tsv(kff.final,'data/output/medicaid_expansion.txt')

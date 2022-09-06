@@ -4,18 +4,18 @@
 ## Title:  American Community Survey Data
 ## Author: Ian McCarthy
 ## Date Created: 12/6/2019
-## Date Edited:  12/6/2019
+## Date Edited:  9/6/2022
 
 
 # Preliminaries -----------------------------------------------------------
+
 ## see list of variable names and tables
 acs.lookup(endyear=2012, table.number="B27010", span=1)
 
 
-
 # Retrieve ACS data -------------------------------------------------------
 states <- geo.make(state="*")
-for (t in 2012:2018) {
+for (t in 2012:2019) {
   ins.all <- acs.fetch(geography=states, table.number="B27010", span=1, endyear=t)
   ins.dat <- ins.all@estimate[,cbind("B27010_018",
                                  "B27010_020",
@@ -60,7 +60,7 @@ for (t in 2012:2018) {
 # Tidy --------------------------------------------------------------------
 
 final.insurance <- rbind(insurance.2012, insurance.2013, insurance.2014, insurance.2015, insurance.2016,
-                         insurance.2017, insurance.2018)
+                         insurance.2017, insurance.2018, insurance.2019)
 final.insurance <- final.insurance %>%
   mutate(adult_pop = all_18to34 + all_35to64,
          ins_employer = employer_18to34 + employer_35to64,
@@ -72,5 +72,4 @@ final.insurance <- final.insurance %>%
          ins_medicare, ins_medicaid, uninsured)
 
 
-write_tsv(final.insurance,'data/insurance.txt',append=FALSE,col_names=TRUE)
-write_rds(final.insurance,'data/insurance.rds')
+write_tsv(final.insurance,'data/output/acs_insurance.txt')
